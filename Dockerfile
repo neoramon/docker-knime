@@ -27,7 +27,9 @@ RUN \
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
 
-ADD https://download.knime.org/analytics-platform/linux/knime_3.1.2.linux.gtk.x86_64.tar.gz /root/
+ADD http://download.knime.org/analytics-platform/linux/knime_3.1.2.linux.gtk.x86_64.tar.gz /root/
+RUN tar -xvf /root/knime_3.1.2.linux.gtk.x86_64.tar.gz -C /root/
+RUN mkdir /root/Desktop
 RUN chmod +x /root/knime_3.1.2/knime
 RUN ln -s /root/knime_3.1.2/knime /root/Desktop/knime
 
