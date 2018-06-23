@@ -26,12 +26,17 @@ RUN \
 # Define commonly used JAVA_HOME variable
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
+# Install Webkit for Browsersupport in Knime
+RUN \
+	apt-get install -y libwebkitgtk-3.0-0
 
-ADD http://download.knime.org/analytics-platform/linux/knime_3.1.2.linux.gtk.x86_64.tar.gz /root/
-RUN tar -xvf /root/knime_3.1.2.linux.gtk.x86_64.tar.gz -C /root/
+# Install Knime, 3.5.3 canbe replaced with current versions
+
+ADD http://download.knime.org/analytics-platform/linux/knime_3.5.3.linux.gtk.x86_64.tar.gz /root/
+RUN tar -xvf /root/knime_3.5.3.linux.gtk.x86_64.tar.gz -C /root/
 RUN mkdir /root/Desktop
-RUN chmod +x /root/knime_3.1.2/knime
-RUN ln -s /root/knime_3.1.2/knime /root/Desktop/knime
+RUN chmod +x /root/knime_3.5.3/knime
+RUN ln -s /root/knime_3.5.3/knime /root/Desktop/knime
 
 RUN rm -rf /var/lib/apt/lists/*
 EXPOSE 5901
